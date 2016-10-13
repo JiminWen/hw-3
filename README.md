@@ -1,3 +1,4 @@
+<<<<<<< 557a03df475cf65ca60de4802f3d71cd62d2410a
 # RottenPotatoes demo app: getting started
 
 This app is associated with the free [online
@@ -25,3 +26,23 @@ directory.
 0. Run `rails server -p $PORT -b $IP` to start the app.  Cloud9 will pop
 up a window showing the URL to visit in your browser to interact with
 the running app.
+=======
+
+     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
+    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
+    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
+    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
+     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
+    ----------------------------------------------------------------- 
+
+
+Hi there! Welcome to Cloud9 IDE!
+
+To get you started, create some files, play with the terminal,
+or visit http://docs.c9.io for our documentation.
+If you want, you can also go watch some training videos at
+http://www.youtube.com/user/c9ide.
+
+Happy coding!
+The Cloud9 IDE team
+>>>>>>> change css
