@@ -12,6 +12,7 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    @all_ratings=Movie.all_ratings
     sort=params[:sort_critical]
     case sort
     when 'by_title'
