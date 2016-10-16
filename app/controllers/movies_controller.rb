@@ -13,10 +13,17 @@ class MoviesController < ApplicationController
   def index
     @all_ratings=Movie.all_ratings
     @movies = Movie.all
-    if params[:ratings]
-    @filter=params[:ratings].keys
-    @movies=Movie.where(rating: @filter)
+    
+    @filter=params[:ratings]|| session[:ratings]|| {}  
+    if @filter == {}
+      @filter = Hash[@all_ratings.map {|rating| [rating, rating]}]
     end
+    
+    @filter_key=@filter.keys
+    @movies=Movie.where(rating: @filter_key)
+    
+    
+    
     sort=params[:sort_critical]
     case sort
     when 'by_title'
