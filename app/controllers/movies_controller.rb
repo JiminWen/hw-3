@@ -24,7 +24,7 @@ class MoviesController < ApplicationController
     
     
     
-    sort=params[:sort_critical]
+    sort=params[:sort_critical]|| session[:sort]
     case sort
     when 'by_title'
       @movies=@movies.order(:title)
