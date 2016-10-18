@@ -16,24 +16,26 @@ class MoviesController < ApplicationController
     if @filter == {}
       @filter = Hash[@all_ratings.map {|rating| [rating, rating]}]
     end
-   # @movies=Movie.where(rating: @filter.keys)
-    
-    @movies=Movie.where(rating: @filter.keys)
     sort=params[:sort_critical]|| session[:sort_critical]
-    case sort
-    when 'by_title'
-      @movies=@movies.order(:title)
-      @movie_title='hilite'
-    when 'by_date'
-      @movies=@movies.order(:release_date)
-      @release_date='hilite'
-    end
     
     if params[:sort_critical]!=sort||params[:ratings]!=@filter
       session[:sort_critical]=sort
       session[:ratings]=@filter
       redirect_to :sort_critical => sort, :ratings => @filter and return 
     end
+    
+   # @movies=Movie.where(rating: @filter.keys)
+    
+    case sort
+    when 'by_title'
+      @movies=Movie.where(rating: @filter.keys).order(:title)
+      @movie_title='hilite'
+    when 'by_date'
+      @movies=Movie.where(rating: @filter.keys).order(:release_date)
+      @release_date='hilite'
+    end
+    
+    
     
       
   end
