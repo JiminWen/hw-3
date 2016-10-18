@@ -24,14 +24,14 @@ class MoviesController < ApplicationController
       redirect_to :sort_critical => sort, :ratings => @filter and return 
     end
     
-   # @movies=Movie.where(rating: @filter.keys)
+    @movies=Movie.where(rating: @filter.keys)
     
     case sort
     when 'by_title'
       @movies=Movie.where(rating: @filter.keys).order(:title)
       @movie_title='hilite'
     when 'by_date'
-      @movies=Movie.where(rating: @filter.keys).order(:release_date)
+      @movies=@movies.order(:release_date)
       @release_date='hilite'
     end
     
