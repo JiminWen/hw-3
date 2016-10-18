@@ -11,6 +11,7 @@ class MoviesController < ApplicationController
   end
 
   def index
+    #session.clear
     @all_ratings=Movie.all_ratings
     @filter=params[:ratings]|| session[:ratings]||{}  
     if @filter == {}
@@ -18,21 +19,22 @@ class MoviesController < ApplicationController
     end
     sort=params[:sort_critical]|| session[:sort_critical]
     
-    if params[:sort_critical]!=sort||params[:ratings]!=@filter
+    if params[:sort_critical]!=session[:sort_critical]||params[:ratings]!=session[:ratings]
       session[:sort_critical]=sort
       session[:ratings]=@filter
       redirect_to :sort_critical => sort, :ratings => @filter and return 
     end
     
-    @movies=Movie.where(rating: @filter.keys)
+    #@movies=Movie.where(rating: @filter.keys)
     
-    case sort
-    when 'by_title'
+    if sort=='by_title'
       @movies=Movie.where(rating: @filter.keys).order(:title)
       @movie_title='hilite'
-    when 'by_date'
-      @movies=@movies.order(:release_date)
+    elsif sort=='by_date'
+      @movies=Movie.where(rating: @filter.keys).order(:release_date)
       @release_date='hilite'
+    else 
+      @movies=Movie.where(rating: @filter.keys)
     end
     
     
